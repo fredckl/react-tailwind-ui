@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { withCommonProps } from '../hoc';
 
 const Row = ({
   cols,
@@ -26,4 +27,4 @@ const Row = ({
   )
 }
 
-export default Row
+export default withCommonProps(Row)

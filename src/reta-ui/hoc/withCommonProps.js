@@ -2,8 +2,9 @@ import React from 'react';
 import { pick, propOr } from 'ramda';
 import classnames from 'classnames';
 import {
-  generateCommonClasses,
-  generateClassesWithReplaceKey
+    generateCommonClasses,
+    generateClassesWithReplaceKey,
+    generateClassesAndAddedKeyName
 } from '../tools/classGenerator';
 
 const withCommonProps = (Component) => {
@@ -26,16 +27,17 @@ const withCommonProps = (Component) => {
       'bg',
       'font'
     ])(props);
-  
     const classNames = classnames(
       propOr(null, 'className', props),
       generateCommonClasses(commonProps),
-      generateClassesWithReplaceKey(pick(['textColor'], props), /Color/g),
-      generateClassesWithReplaceKey(pick(['textSize'], props), /Size/g)
+      generateClassesWithReplaceKey(/color/g, pick(['textcolor'], props)),
+      generateClassesWithReplaceKey(/size/g, pick(['textsize'], props)),
+      generateClassesAndAddedKeyName('border', props)
     );
 
     return <Component className={classNames} {...props} />
   };
+
   component.displayName = getDisplayName(component);
   return component;
 }
