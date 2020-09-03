@@ -1,6 +1,6 @@
-import React from 'react'
-import classnames from 'classnames'
-import withCommonProps from '../hoc/withCommonProps';
+import React from "react";
+import classnames from "classnames";
+import withCommonProps from "../hoc/withCommonProps";
 const Col = ({
   span,
   start,
@@ -11,7 +11,7 @@ const Col = ({
   lg,
   xl,
   className,
-  children
+  children,
 }) => {
   const classNames = classnames(className, {
     [`col-${auto}`]: auto,
@@ -22,12 +22,9 @@ const Col = ({
     [`md:col-span-${span}`]: md,
     [`lg:col-span-${span}`]: lg,
     [`xl:col-span-${span}`]: xl,
-  })
-  return (
-    <div className={classNames}>
-      {children}
-    </div>
-  )
-}
+  });
+
+  return <div className={classNames}>{children}</div>;
+};
 
 export default withCommonProps(Col);

@@ -2,20 +2,18 @@
   "name": "react-tailwindcss",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+  "peerDependencies": {
     "classnames": "^2.2.6",
     "ramda": "^0.27.1",
     "ramda-adjunct": "^2.27.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-dom": "^16.13.1"
   },
+  "dependencies": {},
   "scripts": {
     "start": "yarn run watch:css && react-scripts start",
     "build": "yarn run build:css && react-scripts build",
+    "build:npm": "cleandir ./dist && rollup -c rollup.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
@@ -37,8 +35,22 @@
     ]
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-node-resolve": "^8.1.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
     "autoprefixer": "^9.8.6",
+    "clean-dir": "^1.0.3",
     "postcss-cli": "^7.1.1",
+    "react-scripts": "3.4.3",
+    "rollup": "^2.26.9",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-postcss": "^3.1.1",
+    "rollup-plugin-terser": "^6.1.0",
     "tailwindcss": "^1.7.5"
   }
 }
