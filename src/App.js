@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from './reta-ui';
-import { Text } from './reta-ui';
+import { Container, Row, Col, Text } from './reta-ui';
 
 function App() {
   return (

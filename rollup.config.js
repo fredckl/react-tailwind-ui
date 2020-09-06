@@ -1,81 +1,33 @@
-import resolve from "@rollup/plugin-node-resolve";
-import babel from "rollup-plugin-babel";
-import postcss from "rollup-plugin-postcss";
-import commonjs from "@rollup/plugin-commonjs";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import path from "path";
-import pkg from "./package.json";
-import copy from "rollup-plugin-copy";
-import { terser } from "rollup-plugin-terser";
+import babel from 'rollup-plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
+import external from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
+import resolve from '@rollup/plugin-node-resolve';
+import image from '@rollup/plugin-image'
+import visualizer from 'rollup-plugin-visualizer';
+import pkg from './package.json';
 
 export default {
-  input: "src/reta-ui/index.js",
+  input: './src/reta-ui/index.js',
   output: [
     {
       file: pkg.main,
-      format: "cjs",
-      sourcemap: true,
-      exports: "named",
-      name: "Reta-ui",
+      format: 'cjs'
     },
     {
       file: pkg.module,
-      format: "es",
-      sourcemap: true,
-      exports: "named",
-    },
+      format: 'esm'
+    }
   ],
-  external: ["react", "react-dom", "ramda", "ramda-adjuct"],
   plugins: [
-    terser(),
-    // copy({
-    //   targets: [
-    //     {
-    //       src: [
-    //         'app/widgets/assets/svg',
-    //       ],
-    //       dest: 'dist/assets'
-    //     },
-    //     {
-    //       src: [
-    //         'app/widgets/assets/fonts'
-    //       ],
-    //       dest: 'dist'
-    //     },
-    //     {
-    //       src: [
-    //         'app/widgets/assets/less/vars.less',
-    //         'app/widgets/assets/less/varicons.less',
-    //         'app/widgets/assets/less/antd-custom.less',
-    //       ],
-    //       dest: 'dist/less'
-    //     }
-    //   ]
-    // }),
-    peerDepsExternal(),
-    // postcss({
-    //   plugins: [],
-    //   minimize: false,
-    //   extract: 'assets/style.css',
-    //   use: [[
-    //     'less',
-    //     {
-    //       modifyVars: {
-    //         'hack': `true; @import "${path.join(__dirname, 'app', 'widgets', 'assets', 'less', 'antd-custom.less')}";`
-    //       },
-    //       javascriptEnabled: true
-    //     }
-    //   ]]
-    // }),
+    external(),
+    postcss(),
     babel({
-      runtimeHelpers: true,
-      exclude: ["node_modules/**", "*.json"],
+      exclude: 'node_modules/**'
     }),
-    resolve({
-      browser: true,
-    }),
-    commonjs({
-      include: "node_modules/**",
-    }),
-  ],
+    resolve(),
+    commonjs(),
+    image(),
+    visualizer()
+  ]
 };
