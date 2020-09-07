@@ -9,9 +9,12 @@
   ],
   "peerDependencies": {
     "react": "^16.13.1",
+    "tailwindcss": "^1.7.5"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
-  "dependencies": {},
   "scripts": {
     "start": "yarn run watch:css && react-scripts start",
     "build": "yarn run build:css && react-scripts build",
@@ -25,7 +28,22 @@
     "release": "yarn build && changeset publish"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "react/prop-types": [
+        2,
+        {
+          "ignore": [
+            "className",
+            "children"
+          ]
+        }
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -52,6 +70,7 @@
     "classnames": "^2.2.6",
     "clean-dir": "^1.0.3",
     "postcss-cli": "^7.1.1",
+    "prop-types": "^15.7.2",
     "ramda": "^0.27.1",
     "ramda-adjunct": "^2.27.0",
     "react-scripts": "3.4.3",
