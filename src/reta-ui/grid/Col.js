@@ -1,11 +1,12 @@
-import React from "react";
-import classnames from "classnames";
-import withCommonProps from "../hoc/withCommonProps";
+import React from 'react';
+import classnames from 'classnames';
+import withCommonProps from '../hoc/withCommonProps';
+import PropTypes from 'prop-types'
+
 const Col = ({
   span,
   start,
   end,
-  auto,
   sm,
   md,
   lg,
@@ -14,7 +15,7 @@ const Col = ({
   children,
 }) => {
   const classNames = classnames(className, {
-    [`col-${auto}`]: auto,
+    'col-auto': span === 'auto',
     [`col-span-${span}`]: span,
     [`col-start-${span}`]: start,
     [`col-end-${end}`]: end,
@@ -24,7 +25,17 @@ const Col = ({
     [`xl:col-span-${span}`]: xl,
   });
 
-  return <div className={classNames}>{children}</div>;
+  return React.createElement('div', { className: classNames }, children);
 };
+
+Col.propTypes = {
+  span: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  start: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  end: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  sm: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  md: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  lg: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  xl: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+}
 
 export default withCommonProps(Col);

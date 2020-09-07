@@ -1,12 +1,18 @@
-import React from "react";
-import classnames from "classnames";
-import { withCommonProps } from "../hoc";
+import React from 'react';
+import classnames from 'classnames';
+import { withCommonProps } from '../hoc';
+import PropTypes from 'prop-types';
 
 const Container = ({ auto, className, children }) => {
-  const classNames = classnames(className, "container", {
-    [`mx-auto`]: auto,
+  const classNames = classnames(className, 'container', {
+    'mx-auto': auto,
   });
-  return <div className={classNames}>{children}</div>;
+
+  return React.createElement('div', { className: classNames }, children);
 };
+
+Container.propTypes = {
+  auto: PropTypes.string
+}
 
 export default withCommonProps(Container);
