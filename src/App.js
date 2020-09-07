@@ -1,5 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Text } from './reta-ui';
+import config from './reta-ui/settings/config';
+
 
 function App() {
   return (
@@ -7,6 +9,7 @@ function App() {
       <Row cols={4} sm={3} md={2} gap={4}>
         <Col className={['bg-blue-500', 'text-white']} span={2} style={{backgroundColor: 'yellow'}}>
           <p className={['text-red-500']}>Hello</p>
+          <p className="bg-teal-500 text-4xl text-center">.....</p>
         </Col>
         <Col bg={'red-500'} textcolor={'blue-300'} textsize={'xs'} pl={3}>
           <p>Hello</p>
