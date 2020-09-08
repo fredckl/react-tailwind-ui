@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Text } from './reta-ui';
-import config from './reta-ui/settings/config';
-
+import getTheme from './reta-ui/settings/getTheme';
 
 function App() {
   return (
