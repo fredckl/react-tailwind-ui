@@ -1,6 +1,6 @@
 export {
   Container,
-  Row,
+  Grid,
   Col,
 } from './grid';
 

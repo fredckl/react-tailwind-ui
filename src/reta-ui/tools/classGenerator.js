@@ -11,7 +11,10 @@ import {
   fromPairs,
   pick,
   when,
-  assoc
+  assoc,
+  is,
+  zipObj,
+  propOr
 } from 'ramda';
 
 const mergeKeyVal = (k, v, sep = '-') => `${k}${sep}${v}`;
@@ -33,3 +36,22 @@ export const generateClassesAndAddedKeyName = (className, props) => compose(
   generateCommonClasses,
   pick([className])
 )(props);
+
+export const generateClassesBorder = (props) => {
+  const border = propOr(null, 'border', props);
+  if (!border) return null;
+  let classNames = {};
+  console.log(border);
+  let width = propOr(null, 'width', border);
+  if (!width) return null;
+  if (is(String, width)) width = [width];
+  console.log(width);
+  classNames = map(v => `border${v}`)(width);
+  console.log('Classnames', classNames, width, props);
+  const color = pick(['color']);
+
+  // compose(
+
+  //   pick(['border'])
+  // )(props);
+};

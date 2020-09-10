@@ -5,11 +5,14 @@ import {
   generateCommonClasses,
   generateClassesWithReplaceKey,
   generateClassesAndAddedKeyName,
+  generateClassesBorder
 } from '../tools/classGenerator';
 
 const withCommonProps = (Component) => {
   const component = (props) => {
     const commonProps = pick([
+      'h',
+      'w',
       'p',
       'pt',
       'pb',
@@ -27,6 +30,7 @@ const withCommonProps = (Component) => {
       'bg',
       'font',
     ])(props);
+    generateClassesBorder(props);
     const classNames = classnames(
       propOr(null, 'className', props),
       generateCommonClasses(commonProps),

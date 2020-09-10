@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
   },
   "scripts": {
     "start": "yarn run watch:css && react-scripts start",
@@ -42,6 +43,13 @@
       "quotes": [
         "error",
         "single"
+      ],
+      "comma-style": [
+        2,
+        "last"
+      ],
+      "semi": [
+        2
       ]
     }
   },

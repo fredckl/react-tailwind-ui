@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { withCommonProps } from '../hoc';
 import PropTypes from 'prop-types';
 
-const Row = ({ cols, gap, sm, md, lg, xl, className, children }) => {
+const Grid = ({ cols, gap, sm, md, lg, xl, className, children }) => {
   const classNames = classnames(className, 'grid', {
     [`grid-cols-${cols}`]: cols,
     [`gap-${gap}`]: gap,
@@ -16,13 +16,13 @@ const Row = ({ cols, gap, sm, md, lg, xl, className, children }) => {
   return React.createElement('div', { className: classNames }, children);
 };
 
-Row.propTypes = {
+Grid.propTypes = {
   cols: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   gap: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   sm: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   md: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   lg: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   xl: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-}
+};
 
-export default withCommonProps(Row);
+export default withCommonProps(Grid);
